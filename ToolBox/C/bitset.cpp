@@ -1,3 +1,4 @@
+//learnt to deal with binary strings
 #include <iostream>
 #include <bits/stdc++.h>
 #include <sstream>
