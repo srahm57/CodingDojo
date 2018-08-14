@@ -1,35 +1,64 @@
-#include <stdio.h>
-#include <conio.h>
+#include <iostream>
+#include <strings.h>
+using namespace std;
 
 struct Book{
-	char * name;
-	char * author_name;
-	char * publication;
+	string name;
+	string author_name;
+	string publication;
 	int edition;
 	int isbn_no;
 	float price;
 	int publication_year;
 };
 
-int main(void) {
-	struct Book b;
+int main() {
+	struct Book b[2];
 	char ch = 'y';
+	int i=0;
 	while(ch == 121){
-		printf("Enter Book name: ");
-		scanf("%s", b.name);
-		printf("\n");
+		cout<<"Enter Book name: ";
+		cin>>b[i].name;
+		cout<<endl;
 
-		printf("Enter edition: ");
-		scanf("%d", &(b.edition));
-		printf("\n");
+		cout<<"Enter Author name: ";
+		cin>>b[i].author_name;
+		cout<<endl;
+
+		cout<<"Enter Publication: ";
+		cin>> b[i].publication;
+		cout<<endl;
+
+		cout<<"Enter Edition: ";
+		cin>>b[i].edition;
+		cout<<endl;
+
+		cout<<"Enter ISBN no: ";
+		cin>>b[i].isbn_no;
+		cout<<endl;
+
+		cout<<"Enter Price: ";
+		cin>>b[i].price;
+		cout<<endl;
+
+		cout<<"Enter publication year: ";
+		cin>>b[i].publication_year;
+		cout<<endl;
 		
-		printf("Continue? (y/n): ");
-		printf("%c", ch);
-		ch = getch();
-		//scanf("%c", &ch);
+		cout<<"Continue? (y/n): ";
+		cin>> ch;
+		i++;
 	}
 	
-	printf("Name: %s \n", b.name);
-	printf("Edition: %d \n", b.edition);
+	for(int i=0; i<2; i++){
+		cout<<"Name: "<<b[i].name<<endl;
+		cout<<"Author name: "<<b[i].author_name;
+		cout<<"Publication: "<<b[i].publication;
+		cout<<"Edition: " << b[i].edition;
+		cout<<"ISBN no: "<<b[i].isbn_no;
+		cout<<"Enter Price: "<<b[i].price;
+		cout<<"Enter publication year: "<<24publication_year;
+	}
+
 	return 0;
 }
