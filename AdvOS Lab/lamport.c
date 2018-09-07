@@ -36,14 +36,14 @@ void main()
         
         for(i=1;i<e;i++){ 
            if(i==m2){ 
-               if(m1 > p[r][i-1]) 
-                   p[r][i]=m1+1; 
+               if(p[s][m1] > p[r][i-1]) 
+                   p[r][i]=p[s][m1]+1; 
                else 
                    p[r][i]=p[r][i-1]+1; 
                    //p[s][i]=p[s][i-1]+1; 
                  } 
             else{ 
-                
+                p[r][i]=p[r][i-1]+1; 
                 } 
            }
        }
@@ -55,4 +55,4 @@ for(j=0;j<3;j++){
     } 
 printf("\n"); 
 }
-} 
+}
