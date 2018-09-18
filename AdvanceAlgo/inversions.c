@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
-int numinv = 0;
 
-void merge(int* a, int head, int mid, int end){
+int merge(int* a, int head, int mid, int end){
+	int numinv = 0;
 	int i,j,k;
 	int s1 = mid-head+1;
 	int s2 = end-mid;
@@ -11,7 +11,7 @@ void merge(int* a, int head, int mid, int end){
 		L[i] = a[head + i];
 	}
 	for(i=0;i<s2;i++){
-		R[i] = a[mid+head+j];
+		R[i] = a[mid+i+1]; //important
 	}
 	i = j = 0;
 	k = head;
@@ -23,7 +23,7 @@ void merge(int* a, int head, int mid, int end){
 		else{
 			a[k] = R[j];
 			j++;
-			numinv++;
+			numinv = numinv + (s2-i);	//count all from i to end of L arr
 		}
 		k++;
 	}
@@ -35,29 +35,33 @@ void merge(int* a, int head, int mid, int end){
 		a[k] = R[j];
 		k++; j++;
 	}
+return (numinv);
 }
-void mergesort(int * a, int head, int end){
+int mergesort(int* a, int head, int end){
 	if(head<end){
-		int mid = head+end/2;
-		mergesort(a, head, mid);
-		mergesort(a, mid+1, end);
-		merge(a, head, mid, end);
+		int mid = head+(end-head)/2;
+		int inv1 = mergesort(a, head, mid);
+		int inv2 = mergesort(a, mid+1, end);
+		int tot_inv = inv1 + inv2+ merge(a, head, mid, end);
+		return  (tot_inv);
 	}
+	else return(0);
 }
 
 int main(){
 	int i, n, head, end;
-	int* a;
+	//int* a;
 	printf("Enter number of elements: ");
 	scanf("%d", &n);
-	a = (int *)malloc(n*sizeof(int));
+	int a[n];
+	//a = (int *)malloc(n*sizeof(int));
 	head = 0;
 	end = n-1;
 	printf("\nEnter %d elements\n", n);
 	for(i = 0; i<n; i++){
 		scanf("%d",&a[i]);
 	}
-	mergesort(a, head, end);
-	printf("%d", numinv);
+	int countinv = mergesort(a, head, end);
+	printf("%d", countinv);
 	return 0;
 }
