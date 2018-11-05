@@ -1,3 +1,4 @@
+//96A
 //Output "No" for atleast 7 consecutive 1's or atleast 7 consec 0's, else output "Yes"
 #include<iostream>
 #include<string.h>
